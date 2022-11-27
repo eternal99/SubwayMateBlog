@@ -1,18 +1,10 @@
 import { dbService } from "fbase";
-import React, { useEffect, useReducer, useState } from "react";
-import {
-    addDoc,
-    collection,
-    getFirestore,
-    onSnapshot,
-    orderBy,
-    query,
-    where,
-} from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Nweet from "components/Nweet";
+import NweetFactory from "components/NweetFactory";
 
 const Home = ({ userObj }) => {
-    const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
 
     useEffect(() => {
@@ -31,37 +23,9 @@ const Home = ({ userObj }) => {
         };
     }, []);
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const docRef = await addDoc(collection(dbService, "nweets"), {
-                text: nweet,
-                createdAt: Date.now(),
-                creatorId: userObj.uid,
-            });
-        } catch (event) {
-            console.log("Error adding document: ", event);
-        }
-        setNweet("");
-    };
-    const onChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setNweet(value);
-    };
     return (
         <div>
-            <form onSubmit={onSubmit}>
-                <input
-                    value={nweet}
-                    onChange={onChange}
-                    type="text"
-                    placeholder="what's on your mind?"
-                    maxLength={120}
-                />
-                <input type="submit" value="submit" />
-            </form>
+            <NweetFactory userObj={userObj} />
             <div>
                 {nweets.map((nweet) => (
                     <Nweet
