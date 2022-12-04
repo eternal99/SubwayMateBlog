@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/SubwayMateBlog.git/static/css/main.a749d3de.css",
-    "main.js": "/SubwayMateBlog.git/static/js/main.f8ff39d6.js",
-    "index.html": "/SubwayMateBlog.git/index.html",
-    "main.a749d3de.css.map": "/SubwayMateBlog.git/static/css/main.a749d3de.css.map",
-    "main.f8ff39d6.js.map": "/SubwayMateBlog.git/static/js/main.f8ff39d6.js.map"
+    "main.css": "/SubwayMateBlog/static/css/main.a749d3de.css",
+    "main.js": "/SubwayMateBlog/static/js/main.416bca1b.js",
+    "index.html": "/SubwayMateBlog/index.html",
+    "main.a749d3de.css.map": "/SubwayMateBlog/static/css/main.a749d3de.css.map",
+    "main.416bca1b.js.map": "/SubwayMateBlog/static/js/main.416bca1b.js.map"
   },
   "entrypoints": [
     "static/css/main.a749d3de.css",
-    "static/js/main.f8ff39d6.js"
+    "static/js/main.416bca1b.js"
   ]
 }
