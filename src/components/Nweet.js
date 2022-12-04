@@ -2,6 +2,8 @@ import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 import { doc, deleteDoc, updateDoc } from "@firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Nweet = ({ nweetObj, isOwner }) => {
     const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
@@ -10,9 +12,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const [newNweet, setNewNweet] = useState(nweetObj.text);
 
     const onDeleteClick = async () => {
-        const ok = window.confirm(
-            "Are you sure you want to delete this nweet?"
-        );
+        const ok = window.confirm("정말 이 게시물을 삭제하시겠어요?");
         if (ok) {
             try {
                 await deleteDoc(NweetTextRef);
@@ -39,22 +39,29 @@ const Nweet = ({ nweetObj, isOwner }) => {
         setNewNweet(value);
     };
     return (
-        <div>
+        <div className="nweet">
             {editing ? (
                 <>
                     {isOwner && (
                         <>
-                            <form onSubmit={onSubmit}>
+                            <form
+                                onSubmit={onSubmit}
+                                className="container nweetEdit"
+                            >
                                 <input
                                     type="text"
-                                    placeholder="Edit your nweet"
+                                    placeholder="새로운 내용을 입력하세요"
                                     value={newNweet}
                                     required
                                     onChange={onChange}
                                 />
-                                <input type="submit" value="Update Nweet" />
+                                <input
+                                    type="submit"
+                                    value="게시물 수정하기"
+                                    className="formBtn"
+                                />
                             </form>
-                            <button onClick={toggleEditing}>Cancel</button>
+                            <button onClick={toggleEditing}>취소</button>
                         </>
                     )}
                 </>
@@ -62,19 +69,17 @@ const Nweet = ({ nweetObj, isOwner }) => {
                 <>
                     <h4>{nweetObj.text}</h4>
                     {nweetObj.attachmentUrl && (
-                        <img
-                            src={nweetObj.attachmentUrl}
-                            width="50px"
-                            height="50px"
-                        />
+                        <img src={nweetObj.attachmentUrl} />
                     )}
                     {isOwner && (
-                        <>
-                            <button onClick={onDeleteClick}>
-                                Delete Nweet
-                            </button>
-                            <button onClick={toggleEditing}>Edit Nweet</button>
-                        </>
+                        <div className="nweet__actions">
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </span>
+                            <span onClick={toggleEditing}>
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                        </div>
                     )}
                 </>
             )}
