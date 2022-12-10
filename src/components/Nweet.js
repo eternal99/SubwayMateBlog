@@ -3,13 +3,21 @@ import React, { useState } from "react";
 import { doc, deleteDoc, updateDoc } from "@firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+    faTrash,
+    faPencilAlt,
+    faHeart,
+    faComment,
+} from "@fortawesome/free-solid-svg-icons";
+import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
+import { async } from "@firebase/util";
 
 const Nweet = ({ nweetObj, isOwner }) => {
     const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
     const desertRef = ref(storageService, nweetObj.attachmentUrl);
     const [editing, setEditing] = useState(false);
     const [newNweet, setNewNweet] = useState(nweetObj.text);
+    const [like, setLike] = useState(false);
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시물을 삭제하시겠어요?");
@@ -37,6 +45,14 @@ const Nweet = ({ nweetObj, isOwner }) => {
             target: { value },
         } = event;
         setNewNweet(value);
+    };
+
+    const onLikeClick = async () => {
+        if (like === true) {
+            setLike(false);
+        } else {
+            setLike(true);
+        }
     };
     return (
         <div className="nweet">
@@ -71,6 +87,16 @@ const Nweet = ({ nweetObj, isOwner }) => {
                     {nweetObj.attachmentUrl && (
                         <img src={nweetObj.attachmentUrl} />
                     )}
+                    <div className="nweet_reaction">
+                        <span onClick={onLikeClick}>
+                            <FontAwesomeIcon
+                                icon={like ? faHeart : emptyHeart}
+                            />
+                        </span>
+                        <span onClick={onLikeClick}>
+                            <FontAwesomeIcon icon={faComment} />
+                        </span>
+                    </div>
                     {isOwner && (
                         <div className="nweet__actions">
                             <span onClick={onDeleteClick}>

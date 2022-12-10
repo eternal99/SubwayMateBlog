@@ -194,6 +194,10 @@ form {
     margin-top: 10px;
 } */
 
+.nweet__reaction {
+    /* position: absolute; */
+}
+
 .nweet__actions {
     position: absolute;
     right: 10px;

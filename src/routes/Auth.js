@@ -4,7 +4,8 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { authService } from "fbase";
 import AuthForm from "./AuthForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faSubway } from "@fortawesome/free-solid-svg-icons";
 
 const Auth = () => {
     const onSocialClick = async (event) => {
@@ -22,7 +23,7 @@ const Auth = () => {
     return (
         <div className="authContainer">
             <FontAwesomeIcon
-                icon={faTwitter}
+                icon={faSubway}
                 color={"#04AAFF"}
                 size="3x"
                 style={{ marginBottom: 30 }}

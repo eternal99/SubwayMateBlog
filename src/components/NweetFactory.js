@@ -72,7 +72,7 @@ const NweetFactory = ({ userObj }) => {
                     value={nweet}
                     onChange={onChange}
                     type="text"
-                    placeholder="what's on your mind?"
+                    placeholder="메시지 입력"
                     maxLength={120}
                 />
                 <input
