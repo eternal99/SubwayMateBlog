@@ -81,10 +81,10 @@ const NweetFactory = ({ userObj }) => {
                     className="factoryInput__arrow"
                 />
             </div>
-            <label htmlFor="attach-file" className="factoryInput__label">
+            {/* <label htmlFor="attach-file" className="factoryInput__label">
                 <span>사진 첨부하기</span>
                 <FontAwesomeIcon icon={faPlus} />
-            </label>
+            </label> */}
             <input
                 id="attach-file"
                 type="file"

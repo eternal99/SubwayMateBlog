@@ -18,7 +18,7 @@ const Navigation = ({ userObj }) => (
                     />
                 </Link>
             </li>
-            <li>
+            {/* <li>
                 <Link to="/HotNweets" style={{ marginRight: 10 }}>
                     <FontAwesomeIcon
                         icon={faHotjar}
@@ -35,7 +35,7 @@ const Navigation = ({ userObj }) => (
                         size="2x"
                     />
                 </Link>
-            </li>
+            </li> */}
             <li>
                 <Link
                     to="/profile"
@@ -56,7 +56,7 @@ const Navigation = ({ userObj }) => (
                     <span style={{ marginTop: 10 }}>
                         {userObj.displayName
                             ? `${userObj.displayName}의 프로필`
-                            : "Profile"}
+                            : "프로필"}
                     </span>
                 </Link>
             </li>
