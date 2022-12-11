@@ -17,7 +17,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const desertRef = ref(storageService, nweetObj.attachmentUrl);
     const [editing, setEditing] = useState(false);
     const [newNweet, setNewNweet] = useState(nweetObj.text);
-    const [like, setLike] = useState(false);
+    // const [like, setLike] = useState(false);
 
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 게시물을 삭제하시겠어요?");
@@ -47,13 +47,13 @@ const Nweet = ({ nweetObj, isOwner }) => {
         setNewNweet(value);
     };
 
-    const onLikeClick = async () => {
-        if (like === true) {
-            setLike(false);
-        } else {
-            setLike(true);
-        }
-    };
+    // const onLikeClick = async () => {
+    //     if (like === true) {
+    //         setLike(false);
+    //     } else {
+    //         setLike(true);
+    //     }
+    // };
     return (
         <div className="nweet">
             {editing ? (
@@ -87,7 +87,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                     {nweetObj.attachmentUrl && (
                         <img src={nweetObj.attachmentUrl} />
                     )}
-                    <div className="nweet_reaction">
+                    {/* <div className="nweet_reaction">
                         <span onClick={onLikeClick}>
                             <FontAwesomeIcon
                                 icon={like ? faHeart : emptyHeart}
@@ -96,7 +96,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                         <span onClick={onLikeClick}>
                             <FontAwesomeIcon icon={faComment} />
                         </span>
-                    </div>
+                    </div> */}
                     {isOwner && (
                         <div className="nweet__actions">
                             <span onClick={onDeleteClick}>
